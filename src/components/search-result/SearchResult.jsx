@@ -1,5 +1,8 @@
+import { useState } from "react";
 import "./searchResultStyle.css";
 export default function SearchResult({ weather, loading, error }) {
+  const [isCelsius, setIsCelsius] = useState(true);
+
   function getCurrentDate() {
     return new Date().toLocaleDateString("en-us", {
       weekday: "long",
@@ -24,6 +27,15 @@ export default function SearchResult({ weather, loading, error }) {
     return directions[index % 8];
   };
 
+  const convertTemp = (temp) => {
+    if (isCelsius) {
+      return `${temp} °C`;
+    } else {
+      const fahrenheit = (temp * 9) / 5 + 32;
+      return `${fahrenheit.toFixed(2)} °F`;
+    }
+  };
+
   if (error) return <h2 className="error">{error}</h2>;
 
   return !loading && !error ? (
@@ -35,15 +47,21 @@ export default function SearchResult({ weather, loading, error }) {
         <h5>{getCurrentDate()}</h5>
       </div>
       <div>
-        <h2>{weather?.main?.temp} °C</h2>
-        <div className="min-max-temp">
-          <div>
-            <span>{weather?.main?.temp_min} °C</span>
-            <p>min</p>
-          </div>
-          <div>
-            <span>{weather?.main?.temp_max} °C</span>
-            <p>max</p>
+        <div className="temperature-unit-button">
+          <button onClick={() => setIsCelsius(true)}>°C</button>
+          <button onClick={() => setIsCelsius(false)}>°F</button>
+        </div>
+        <div>
+          <h2 className="current-temp">{convertTemp(weather?.main?.temp)}</h2>
+          <div className="min-max-temp">
+            <div>
+              <span>{convertTemp(weather?.main?.temp_min)}</span>
+              <p>min</p>
+            </div>
+            <div>
+              <span>{convertTemp(weather?.main?.temp_max)}</span>
+              <p>max</p>
+            </div>
           </div>
         </div>
       </div>
