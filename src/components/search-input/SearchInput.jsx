@@ -2,7 +2,7 @@ import "./searchInputStyle.css";
 export default function SearchInput({ search, setSearch, fetchWeather }) {
   function handleSearch(e) {
     e.preventDefault();
-    fetchWeather(search);
+    fetchWeather(search, "weather");
   }
 
   return (

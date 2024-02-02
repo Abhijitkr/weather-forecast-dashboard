@@ -5,22 +5,24 @@ import SearchResult from "./components/search-result/SearchResult";
 
 export default function App() {
   const [search, setSearch] = useState("Jamshedpur");
-  const [weather, setWeather] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
+  const [futureWeather, setFutureWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const baseUrl = "https://api.openweathermap.org/data/2.5";
   const api = import.meta.env.VITE_OPENWEATHER_API;
 
-  async function fetchWeather(search) {
+  async function fetchWeather(search, searchType) {
     setLoading(true);
     try {
       const response = await fetch(
-        `${baseUrl}/weather?q=${search}&units=metric&appid=${api}`
+        `${baseUrl}/${searchType}?q=${search}&units=metric&appid=${api}`
       );
       const data = await response.json();
       if (response.ok) {
-        setWeather(data);
+        if (searchType === "weather") setCurrentWeather(data);
+        else setFutureWeather(data);
         setError(null);
       }
       setError(data.message);
@@ -32,10 +34,12 @@ export default function App() {
     }
   }
 
-  console.log(weather);
+  // console.log(currentWeather, "current");
+  console.log(futureWeather, "future");
 
   useEffect(() => {
-    fetchWeather(search);
+    fetchWeather(search, "weather");
+    fetchWeather(search, "forecast");
   }, []);
 
   return (
@@ -46,7 +50,12 @@ export default function App() {
         setSearch={setSearch}
         fetchWeather={fetchWeather}
       />
-      <SearchResult weather={weather} loading={loading} error={error} />
+      <SearchResult
+        currentWeather={currentWeather}
+        futureWeather={futureWeather}
+        loading={loading}
+        error={error}
+      />
     </main>
   );
 }

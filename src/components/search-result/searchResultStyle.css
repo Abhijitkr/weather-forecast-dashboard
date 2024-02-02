@@ -8,7 +8,15 @@
 }
 
 .search-result-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.current-weather-container {
   background-color: #68d391;
+  max-width: 300px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -16,9 +24,9 @@
   border-radius: 0.25rem;
   color: white;
   font-size: 1.2rem;
-  margin-right: auto;
   gap: 0.5rem;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1), 0 3px 5px rgba(0, 0, 0, 0.1);
+  height: fit-content;
 }
 
 .current-temp {
@@ -63,4 +71,29 @@
 
 .temperature-unit-button button:active {
   transform: scale(0.95);
+}
+
+.future-weather {
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-size: medium;
+  color: white;
+}
+
+.weather-card {
+  background-color: #68d391;
+  text-align: center;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1), 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card h3 {
+  text-transform: capitalize;
 }
