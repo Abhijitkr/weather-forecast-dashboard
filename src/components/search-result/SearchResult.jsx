@@ -10,8 +10,9 @@ export default function SearchResult({
 }) {
   const [isCelsius, setIsCelsius] = useState(true);
 
-  function formatDate(date = "") {
-    return new Date(date).toLocaleDateString("en-us", {
+  function formatDate(date) {
+    const currentDate = date ? new Date(date) : new Date();
+    return currentDate.toLocaleDateString("en-us", {
       weekday: "long",
       day: "numeric",
       month: "long",
