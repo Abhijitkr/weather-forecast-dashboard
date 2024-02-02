@@ -9,13 +9,14 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const baseUrl = "https://api.openweathermap.org/data/2.5";
   const api = import.meta.env.VITE_OPENWEATHER_API;
 
   async function fetchWeather(search) {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=${api}`
+        `${baseUrl}/weather?q=${search}&units=metric&appid=${api}`
       );
       const data = await response.json();
       if (response.ok) {
