@@ -9,35 +9,30 @@ export default function SearchResult({ weather, loading, error }) {
     });
   }
 
-  if (error)
-    return <h2 className="text-3xl font-bold text-red-300">{error}</h2>;
+  if (error) return <h2 className="error">{error}</h2>;
 
   return !loading && !error ? (
-    <div className="bg-green-500 p-5 rounded text-center text-white w-[500px] flex flex-col gap-4">
-      {/* <h2 className="text-2xl font-bold">Weather</h2> */}
-
+    <div className="search-result-container">
       <div>
-        <p className="text-3xl font-semibold">
+        <h2>
           {weather?.name}, {weather?.sys?.country}
-        </p>
-        <p className="text-base">{getCurrentDate()}</p>
+        </h2>
+        <h3>{getCurrentDate()}</h3>
       </div>
       <div>
-        <p className="text-4xl font-bold">{weather?.main?.temp} °C</p>
-        <p className="text-3xl font-semibold">
-          {weather?.weather[0]?.description}
-        </p>
+        <h1>{weather?.main?.temp} °C</h1>
+        <h2>{weather?.weather[0]?.description}</h2>
       </div>
       <div>
-        <p className="text-2xl font-bold">{weather?.wind?.speed}</p>
-        <p className="text-base">Wind Speed</p>
+        <h1>{weather?.wind?.speed}</h1>
+        <h3>Wind Speed</h3>
       </div>
       <div>
-        <p className="text-2xl font-bold">{weather?.main?.humidity}</p>
-        <p className="text-base">Humidity</p>
+        <h1>{weather?.main?.humidity}</h1>
+        <h3>Humidity</h3>
       </div>
     </div>
   ) : (
-    <h3 className="text-3xl text-white">Loading...</h3>
+    <h3 className="loading">Loading...</h3>
   );
 }

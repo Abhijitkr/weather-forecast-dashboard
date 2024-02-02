@@ -1,0 +1,20 @@
+.error {
+  color: red;
+  text-transform: capitalize;
+}
+
+.loading {
+  color: orange;
+}
+
+.search-result-container {
+  background-color: #68d391;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  color: white;
+  /* font-size: 1.2rem; */
+}

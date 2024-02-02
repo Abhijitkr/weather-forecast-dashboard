@@ -1,6 +1,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import SearchInput from "./components/search-input/SearchInput";
+import SearchResult from "./components/search-result/SearchResult";
 
 export default function App() {
   const [search, setSearch] = useState("Jamshedpur");
@@ -37,13 +38,14 @@ export default function App() {
   }, []);
 
   return (
-    <main className="main-container flex flex-col items-center justify-center my-10 gap-10">
-      <h1 className="text-3xl font-bold text-white">Weather App Project</h1>
+    <main className="main-container">
+      <h1>Weather App Project</h1>
       <SearchInput
         search={search}
         setSearch={setSearch}
         fetchWeather={fetchWeather}
       />
+      <SearchResult weather={weather} loading={loading} error={error} />
     </main>
   );
 }
