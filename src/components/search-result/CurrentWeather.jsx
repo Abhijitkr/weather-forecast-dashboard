@@ -3,6 +3,7 @@ export default function CurrentWeather({
   formatDate,
   convertTemp,
   setIsCelsius,
+  selectedWeather,
 }) {
   function getWindDirection(windDeg) {
     const directions = [
@@ -25,7 +26,9 @@ export default function CurrentWeather({
         <h2>
           {currentWeather?.name}, {currentWeather?.sys?.country}
         </h2>
-        <h5>{formatDate()}</h5>
+        <h5>
+          {selectedWeather ? formatDate(selectedWeather?.dt_txt) : formatDate()}
+        </h5>
       </div>
       <div>
         <div className="temperature-unit-button">
@@ -34,15 +37,23 @@ export default function CurrentWeather({
         </div>
         <div>
           <h2 className="current-temp">
-            {convertTemp(currentWeather?.main?.temp)}
+            {convertTemp((selectedWeather || currentWeather)?.main?.temp)}
           </h2>
           <div className="min-max-temp">
             <div>
-              <span>{convertTemp(currentWeather?.main?.temp_min)}</span>
+              <span>
+                {convertTemp(
+                  (selectedWeather || currentWeather)?.main?.temp_min
+                )}
+              </span>
               <p>min</p>
             </div>
             <div>
-              <span>{convertTemp(currentWeather?.main?.temp_max)}</span>
+              <span>
+                {convertTemp(
+                  (selectedWeather || currentWeather)?.main?.temp_max
+                )}
+              </span>
               <p>max</p>
             </div>
           </div>
@@ -50,20 +61,22 @@ export default function CurrentWeather({
       </div>
       <div className="weather-desc">
         <img
-          src={`https://openweathermap.org/img/wn/${currentWeather?.weather[0]?.icon}@2x.png`}
-          alt={currentWeather?.weather[0]?.description}
+          src={`https://openweathermap.org/img/wn/${
+            (selectedWeather || currentWeather)?.weather[0]?.icon
+          }@2x.png`}
+          alt={(selectedWeather || currentWeather)?.weather[0]?.description}
         />
-        <h2>{currentWeather?.weather[0]?.description}</h2>
+        <h2>{(selectedWeather || currentWeather)?.weather[0]?.description}</h2>
       </div>
       <div className="weather-details">
         <div>
-          <h3>{currentWeather?.main?.humidity} %</h3>
+          <h3>{(selectedWeather || currentWeather)?.main?.humidity} %</h3>
           <p>Humidity</p>
         </div>
         <div>
           <h3>
-            {currentWeather?.wind?.speed} m/s{" "}
-            {getWindDirection(currentWeather?.wind?.speed)}
+            {(selectedWeather || currentWeather)?.wind?.speed} m/s{" "}
+            {getWindDirection((selectedWeather || currentWeather)?.wind?.speed)}
           </h3>
           <p>Wind</p>
         </div>

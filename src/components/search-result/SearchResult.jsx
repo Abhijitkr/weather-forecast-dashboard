@@ -9,6 +9,7 @@ export default function SearchResult({
   error,
 }) {
   const [isCelsius, setIsCelsius] = useState(true);
+  const [selectedWeather, setSelectedWeather] = useState(null);
 
   function formatDate(date) {
     const currentDate = date ? new Date(date) : new Date();
@@ -29,6 +30,10 @@ export default function SearchResult({
     }
   };
 
+  // function selectedWeather(getCurrentWeather) {
+  //   return getCurrentWeather;
+  // }
+
   if (error) return <h2 className="error">{error}</h2>;
 
   return !loading && !error ? (
@@ -38,11 +43,13 @@ export default function SearchResult({
         formatDate={formatDate}
         convertTemp={convertTemp}
         setIsCelsius={setIsCelsius}
+        selectedWeather={selectedWeather}
       />
       <FutureWeather
         futureWeather={futureWeather}
         formatDate={formatDate}
         convertTemp={convertTemp}
+        setSelectedWeather={setSelectedWeather}
       />
     </div>
   ) : (

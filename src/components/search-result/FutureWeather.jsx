@@ -2,6 +2,7 @@ export default function FutureWeather({
   futureWeather,
   formatDate,
   convertTemp,
+  setSelectedWeather,
 }) {
   const uniqueDates = [
     ...new Set(futureWeather?.list?.map((item) => item.dt_txt.split(" ")[0])),
@@ -14,12 +15,14 @@ export default function FutureWeather({
     return selectedTimeData;
   });
 
-  console.log(uniqueForecastData);
-
   return (
     <div className="future-weather">
       {uniqueForecastData.slice(1).map((item) => (
-        <div key={item?.dt} className="weather-card">
+        <div
+          key={item?.dt}
+          className="weather-card"
+          onClick={() => setSelectedWeather(item)}
+        >
           <h4>{formatDate(item?.dt_txt)}</h4>
           <h2>{convertTemp(item?.main?.temp)}</h2>
           <img

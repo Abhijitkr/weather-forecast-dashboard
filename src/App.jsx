@@ -34,9 +34,6 @@ export default function App() {
     }
   }
 
-  // console.log(currentWeather, "current");
-  console.log(futureWeather, "future");
-
   useEffect(() => {
     fetchWeather(search, "weather");
     fetchWeather(search, "forecast");
