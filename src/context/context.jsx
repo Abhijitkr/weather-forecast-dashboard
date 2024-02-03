@@ -22,8 +22,10 @@ export default function GlobalState({ children }) {
       );
       const data = await response.json();
       if (response.ok) {
-        if (searchType === "weather") setCurrentWeather(data);
-        else setFutureWeather(data);
+        if (searchType === "weather") {
+          setCurrentWeather(data);
+          setSelectedWeather(data);
+        } else setFutureWeather(data);
         setError(null);
       }
       setError(data.message);

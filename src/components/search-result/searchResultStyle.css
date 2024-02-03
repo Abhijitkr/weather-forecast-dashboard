@@ -111,3 +111,8 @@
 .weather-card h3 {
   text-transform: capitalize;
 }
+
+.future-weather .selected {
+  scale: 1.1;
+  background-color: #34d371;
+}

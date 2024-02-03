@@ -6,6 +6,7 @@ export default function FutureWeather() {
     futureWeather,
     formatDate,
     convertTemp,
+    selectedWeather,
     setSelectedWeather,
     currentWeather,
   } = useContext(GlobalContext);
@@ -21,11 +22,17 @@ export default function FutureWeather() {
     return selectedTimeData;
   });
 
+  console.log(selectedWeather);
+
   return (
     <div className="future-weather">
       <div
         key={currentWeather?.dt}
-        className="weather-card"
+        className={
+          selectedWeather?.dt === currentWeather?.dt
+            ? "weather-card selected"
+            : "weather-card"
+        }
         onClick={() => setSelectedWeather(currentWeather)}
       >
         <h4>{formatDate(currentWeather?.dt_txt)}</h4>
@@ -40,7 +47,11 @@ export default function FutureWeather() {
       {uniqueForecastData.slice(1).map((item) => (
         <div
           key={item?.dt}
-          className="weather-card"
+          className={
+            selectedWeather?.dt === item?.dt
+              ? "weather-card selected"
+              : "weather-card"
+          }
           onClick={() => setSelectedWeather(item)}
         >
           <h4>{formatDate(item?.dt_txt)}</h4>
