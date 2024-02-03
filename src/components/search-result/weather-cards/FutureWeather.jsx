@@ -3,18 +3,20 @@ import { GlobalContext } from "../../../context/context";
 
 export default function FutureWeather() {
   const {
-    futureWeather,
-    formatDate,
-    convertTemp,
-    selectedWeather,
-    setSelectedWeather,
-    currentWeather,
+    futureWeather, // State to Hold 5 day Forecast Weather data
+    formatDate, // Function that Formats Date for easy readability
+    convertTemp, // Function to Convert Temperature from Celsius to Fahrenheit and vice versa
+    selectedWeather, // State to Hold Selected Weather data
+    setSelectedWeather, // Sets the State to Hold Selected Weather data
+    currentWeather, // State to Hold Current Weather data
   } = useContext(GlobalContext);
 
+  // Gets weather dataset of unique dates (5 days)
   const uniqueDates = [
     ...new Set(futureWeather?.list?.map((item) => item.dt_txt.split(" ")[0])),
   ];
 
+  // Gets the weather data of 00:00:00 time
   const uniqueForecastData = uniqueDates.map((date) => {
     const selectedTimeData = futureWeather?.list?.find((item) =>
       item.dt_txt.startsWith(`${date} 00:00:00`)
@@ -24,6 +26,7 @@ export default function FutureWeather() {
 
   return (
     <div className="future-weather">
+      {/* Renders the currentWeather card in forecast area with little details */}
       <div
         key={currentWeather?.dt}
         className={
@@ -42,6 +45,7 @@ export default function FutureWeather() {
         <h3>{currentWeather?.weather[0]?.description}</h3>
       </div>
 
+      {/* Renders the 5 day forecast card in forecast area with little details */}
       {uniqueForecastData.slice(1).map((item) => (
         <div
           key={item?.dt}

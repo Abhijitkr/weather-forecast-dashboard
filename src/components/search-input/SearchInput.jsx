@@ -7,9 +7,9 @@ export default function SearchInput() {
 
   function handleSearch(e) {
     e.preventDefault();
-    setSelectedWeather(null);
-    fetchWeather(search, "weather");
-    fetchWeather(search, "forecast");
+    setSelectedWeather(null); // Clears selected weather on new search
+    fetchWeather(search, "weather"); // Fetches current weather
+    fetchWeather(search, "forecast"); // Fetches forecast weather
   }
 
   return (

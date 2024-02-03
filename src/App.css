@@ -8,6 +8,7 @@
   width: 80vw;
   text-align: center;
 }
+
 @media screen and (min-width: 641px) and (max-width: 1007px) {
   .main-container {
     width: 90vw;
