@@ -1,16 +1,17 @@
-export default function FutureWeather({
-  futureWeather,
-  formatDate,
-  convertTemp,
-  setSelectedWeather,
-}) {
+import { useContext } from "react";
+import { GlobalContext } from "../../context/context";
+
+export default function FutureWeather() {
+  const { futureWeather, formatDate, convertTemp, setSelectedWeather } =
+    useContext(GlobalContext);
+
   const uniqueDates = [
     ...new Set(futureWeather?.list?.map((item) => item.dt_txt.split(" ")[0])),
   ];
 
   const uniqueForecastData = uniqueDates.map((date) => {
     const selectedTimeData = futureWeather?.list?.find((item) =>
-      item.dt_txt.startsWith(`${date} 12:00:00`)
+      item.dt_txt.startsWith(`${date} 00:00:00`)
     );
     return selectedTimeData;
   });

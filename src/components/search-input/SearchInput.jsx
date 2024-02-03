@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import "./searchInputStyle.css";
-export default function SearchInput({ search, setSearch, fetchWeather }) {
+import { GlobalContext } from "../../context/context";
+export default function SearchInput() {
+  const { search, setSearch, fetchWeather } = useContext(GlobalContext);
+
   function handleSearch(e) {
     e.preventDefault();
     fetchWeather(search, "weather");
+    fetchWeather(search, "forecast");
   }
 
   return (

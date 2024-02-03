@@ -1,10 +1,15 @@
-export default function CurrentWeather({
-  currentWeather,
-  formatDate,
-  convertTemp,
-  setIsCelsius,
-  selectedWeather,
-}) {
+import { useContext } from "react";
+import { GlobalContext } from "../../context/context";
+
+export default function CurrentWeather() {
+  const {
+    currentWeather,
+    setIsCelsius,
+    selectedWeather,
+    formatDate,
+    convertTemp,
+  } = useContext(GlobalContext);
+
   function getWindDirection(windDeg) {
     const directions = [
       "North ↑",
