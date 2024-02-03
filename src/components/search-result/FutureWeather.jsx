@@ -22,8 +22,6 @@ export default function FutureWeather() {
     return selectedTimeData;
   });
 
-  console.log(selectedWeather);
-
   return (
     <div className="future-weather">
       <div

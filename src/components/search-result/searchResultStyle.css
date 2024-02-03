@@ -16,7 +16,7 @@
 }
 
 .current-weather-container {
-  background-color: #68d391;
+  background-color: #4ed682;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -67,6 +67,7 @@
   font-weight: 600;
   margin: 1rem;
   font-size: large;
+  width: 5rem;
 }
 
 .temperature-unit-button button:hover {
@@ -113,6 +114,23 @@
 }
 
 .future-weather .selected {
-  scale: 1.1;
+  transform: scale(1.1);
   background-color: #34d371;
+}
+
+@media screen and (max-width: 640px) {
+  .search-result-container {
+    flex-direction: column;
+    align-content: center;
+    gap: 2.5rem;
+  }
+
+  .future-weather {
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  .weather-card {
+    width: 90%;
+  }
 }

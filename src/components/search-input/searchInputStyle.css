@@ -1,7 +1,7 @@
 .search-input-form {
   display: flex;
   gap: 1rem;
-  width: 100vw;
+  width: 80vw;
   justify-content: center;
   user-select: none;
 }
@@ -35,4 +35,18 @@
 
 .search-btn:active {
   transform: scale(0.95);
+}
+
+@media screen and (max-width: 640px) {
+  .search-input-form {
+    flex-direction: column;
+    width: 90vw;
+  }
+  .search-input {
+    width: auto;
+  }
+  .search-btn {
+    padding: 0.7rem;
+    font-size: large;
+  }
 }

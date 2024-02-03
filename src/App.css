@@ -5,5 +5,12 @@
   margin: auto;
   gap: 2.5rem;
   color: #68d391;
-  width: 80%;
+  width: 80vw;
+  text-align: center;
+}
+
+@media screen and (max-width: 640px) {
+  .main-container {
+    width: 90vw;
+  }
 }
