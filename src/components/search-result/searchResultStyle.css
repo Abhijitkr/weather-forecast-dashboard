@@ -8,15 +8,16 @@
 }
 
 .search-result-container {
-  width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .current-weather-container {
   background-color: #68d391;
-  max-width: 300px;
-  min-width: 200px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -36,6 +37,9 @@
 .min-max-temp {
   display: flex;
   justify-content: space-around;
+}
+
+.min-max-temp p {
   font-size: medium;
 }
 
@@ -75,18 +79,18 @@
 
 .future-weather {
   display: flex;
-  width: 70%;
-  height: fit-content;
-  gap: 1.2rem;
   flex-wrap: wrap;
-  font-size: medium;
-  color: white;
+  width: 65%;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .weather-card {
   background-color: #68d391;
   text-align: center;
-  margin: auto;
+  width: 200px;
+  height: fit-content;
+  margin: 0 2px;
   padding: 1rem;
   border-radius: 0.25rem;
   color: white;

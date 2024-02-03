@@ -31,9 +31,9 @@ export default function CurrentWeather() {
         <h2>
           {currentWeather?.name}, {currentWeather?.sys?.country}
         </h2>
-        <h5>
+        <h3>
           {selectedWeather ? formatDate(selectedWeather?.dt_txt) : formatDate()}
-        </h5>
+        </h3>
       </div>
       <div>
         <div className="temperature-unit-button">
