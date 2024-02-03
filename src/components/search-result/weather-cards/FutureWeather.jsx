@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../context/context";
+import { GlobalContext } from "../../../context/context";
 
 export default function FutureWeather() {
   const {

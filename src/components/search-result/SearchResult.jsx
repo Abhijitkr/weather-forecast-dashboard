@@ -1,6 +1,6 @@
 import "./searchResultStyle.css";
-import CurrentWeather from "./CurrentWeather";
-import FutureWeather from "./FutureWeather";
+import CurrentWeather from "./weather-cards/CurrentWeather";
+import FutureWeather from "./weather-cards/FutureWeather";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/context";
 export default function SearchResult() {

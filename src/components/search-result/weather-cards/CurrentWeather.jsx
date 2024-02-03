@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GlobalContext } from "../../context/context";
+import { GlobalContext } from "../../../context/context";
 
 export default function CurrentWeather() {
   const {
@@ -21,8 +21,8 @@ export default function CurrentWeather() {
       "West ←",
       "North-West ↖",
     ];
-    const index = Math.round((windDeg % 360) / 45);
-    return directions[index % 8];
+    const index = Math.round(windDeg / 45) % 8;
+    return directions[index];
   }
 
   return (
@@ -81,7 +81,7 @@ export default function CurrentWeather() {
         <div>
           <h3>
             {(selectedWeather || currentWeather)?.wind?.speed} m/s{" "}
-            {getWindDirection((selectedWeather || currentWeather)?.wind?.speed)}
+            {getWindDirection((selectedWeather || currentWeather)?.wind?.deg)}
           </h3>
           <p>Wind</p>
         </div>
