@@ -46,19 +46,19 @@ export default function CurrentWeather() {
           </h2>
           <div className="min-max-temp">
             <div>
-              <span>
+              <h3>
                 {convertTemp(
                   (selectedWeather || currentWeather)?.main?.temp_min
                 )}
-              </span>
+              </h3>
               <p>min</p>
             </div>
             <div>
-              <span>
+              <h3>
                 {convertTemp(
                   (selectedWeather || currentWeather)?.main?.temp_max
                 )}
-              </span>
+              </h3>
               <p>max</p>
             </div>
           </div>
