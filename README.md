@@ -2,6 +2,8 @@
 
 Welcome to the Weather Forecast Dashboard project! This application allows users to check the current weather details and 5-day forecast for a selected city. The user can toggle between Celsius and Fahrenheit for temperature units.
 
+## 📹 Watch the Demo [Weather Forecast Dashboard ](https://youtu.be/vH1YFil6rY4?si=_BKhx33FtRfxj7Ru)
+
 ## Features
 
 1. **Current Weather Details**
